@@ -1,0 +1,23 @@
+{% extends "EcommerceEcommerceBundle:Default:index.html.twig" %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+    <h1 class="text-center">{{produit.nom}}</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <img src="{{produit.image}}"/>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <p>
+                <span><u>Prix:</u> {{produit.prix}}€</span><br/>
+                <span><u>Quantité:</u> {{produit.stock}}</span><br/>
+                {{produit.description}}
+            </p>
+            <input class="btn btn-default" type="button" value="Ajouter au panier"/>
+        </div>
+    </div>
+{% endblock %}

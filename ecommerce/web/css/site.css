@@ -1,0 +1,88 @@
+#main{
+    padding-top:50px;
+}
+
+.navbar{
+    background-color: #FFF;
+    box-shadow: 0px 8px 10px -10px #424242;
+}
+
+.navbarlist{
+    list-style:none;
+    padding:0;
+}
+
+.navbarlist li{
+    display: inline-block;
+}
+
+.navbarLeft{
+    float:left;
+}
+
+.navbarRight{
+    float:right;
+}
+.jumbotron{
+        box-shadow: 0px -8px 10px -10px #424242 inset;
+        margin-bottom: 0;
+}
+
+.jumbotron h1{
+    color:#c92a2a;
+    text-shadow: 1px 1px 3px #424242;
+}
+
+.carousel{
+    height: 100vh;
+}
+
+.carousel .carousel-inner{
+    height: 100%;
+}
+
+
+/* ### PRODUITS ### */
+
+.ListeProduits{
+    list-style:none;
+    padding:0;
+    column-count: 3;
+    column-gap: 10px;
+}
+
+@media(max-width:768px){
+    .ListeProduits{
+        column-count: 1;
+    }
+}
+
+.ListeProduits li{
+    display: inline-block;
+    width:100%;
+}
+
+.produits{
+    border:1px solid #D8D8D8;
+    margin-top:10px;
+}
+
+.produits:hover{
+    border-color:#000;
+    transition:0.5s;
+}
+
+.produitsNom{
+    margin: 0;
+    padding: 14px 5px;
+}
+
+.produitsPrix{
+    margin: 0;
+    padding: 5px;
+    text-align: right;
+}
+
+.imageProduits{
+    width:100%;
+}

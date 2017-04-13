@@ -1,0 +1,23 @@
+ecommerce_ecommerce_homepage:
+    path:     /
+    defaults: { _controller: EcommerceEcommerceBundle:Default:index }
+
+ecommerce_ecommerce_produits:
+    path:     /produits
+    defaults: { _controller: EcommerceEcommerceBundle:Produits:index }
+    
+ecommerce_ecommerce_produit:
+    path:     /produit/{id}
+    defaults: { _controller: EcommerceEcommerceBundle:Produit:index }
+    
+ecommerce_ecommerce_admin:
+    path:     /admin
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:index }   
+    
+ecommerce_ecommerce_admin_EditForm:
+    path:     /admin/formEdit
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:formEdit }    
+
+ecommerce_ecommerce_admin_deleteForm:
+    path:     /admin/formDelete
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:formDelete }    

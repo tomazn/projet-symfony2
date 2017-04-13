@@ -1,0 +1,33 @@
+{% extends "EcommerceEcommerceBundle:Default:index.html.twig" %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+    <h1 class="text-center">Oeuvres d'arts</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+            Filtres
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <ul class="ListeProduits">
+        {% for produit in produits%}
+        <li>
+            <div class="produits">
+            <h3 class="text-center produitsNom">{{produit.nom}}</h3>
+            <a href="{{ path("ecommerce_ecommerce_produit", {'id' : produit.id})}}"><img class="imageProduits" src="{{produit.image}}"/></a>
+            <p class="produitsPrix">
+                <span>Prix: {{produit.prix}}€</span><br/>
+            </p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+        </div>
+    
+    </div>
+</div>
+{% endblock %}
