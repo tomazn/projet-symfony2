@@ -14,10 +14,18 @@ ecommerce_ecommerce_admin:
     path:     /admin
     defaults: { _controller: EcommerceEcommerceBundle:Admin:index }   
     
-ecommerce_ecommerce_admin_EditForm:
-    path:     /admin/formEdit
-    defaults: { _controller: EcommerceEcommerceBundle:Admin:formEdit }    
+ecommerce_ecommerce_admin_ProduitAddForm:
+    path:     /admin/ProduitAddForm
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitAddForm } 
+    
+ecommerce_ecommerce_admin_ProduitEditFormModal:
+    path:     /admin/ProduitEditFormModal
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitEditFormModal }    
 
-ecommerce_ecommerce_admin_deleteForm:
-    path:     /admin/formDelete
-    defaults: { _controller: EcommerceEcommerceBundle:Admin:formDelete }    
+ecommerce_ecommerce_admin_ProduitdeleteForm:
+    path:     /admin/ProduitdeleteForm
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitdeleteForm }
+    
+ecommerce_ecommerce_admin_CategorieAddForm:
+    path: /admin/CategorieAddForm
+    defaults: { _controller: EcommerceEcommerceBundle:Admin:CategorieAddForm } 

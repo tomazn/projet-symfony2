@@ -1,0 +1,30 @@
+ <div role="tabpanel" class="tab-pane active" id="home">
+          <h2 class="text-center">Ajouter une categorie</h2>
+   {{ form_start(form,  {'action': path('ecommerce_ecommerce_admin_CategorieAddForm'), 'method': 'POST'}) }}
+   {{ form_errors(form) }}
+   
+   <!--INTITULE-->
+    <div class="form-group">
+      {{ form_label(form.intitule, "intitulé", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.intitule) }}
+
+        {{ form_widget(form.intitule, {'attr': {'class': 'form-control'}}) }}
+    </div>
+       
+   
+   <!--PARENT-->
+    <div class="form-group">
+      {{ form_label(form.parent, "parent", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.parent) }}
+
+        {{ form_widget(form.parent, {'attr': {'class': ''}}) }}
+    </div>
+   
+   
+         {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+       
+       {{ form_rest(form) }}
+{{ form_end(form) }}
+      </div>

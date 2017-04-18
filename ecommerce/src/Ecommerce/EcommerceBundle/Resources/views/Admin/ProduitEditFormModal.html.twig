@@ -1,7 +1,6 @@
-{{ form_start(formEdit, {'attr':{'class':''}}) }}
+{{ form_start(formEdit) }}
    {{ form_errors(formEdit) }}
-   
-   
+    
    <!--NOM-->
     <div class="form-group">
       {{ form_label(formEdit.nom, "Nom", {'label_attr': {'class': ''}}) }}
@@ -53,7 +52,16 @@
 
       {{ form_errors(formEdit.archive) }}
 
-        {{ form_widget(formEdit.archive, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(formEdit.archive, {'attr': {'class': ''}}) }}
+    </div>
+       
+          <!--CATEGORIE-->
+   <div class="form-group">
+      {{ form_label(formEdit.categorie, "Categorie", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(formEdit.categorie) }}
+
+        {{ form_widget(formEdit.categorie, {'attr': {'class': ''}}) }}
     </div>
        
        {{ form_widget(formEdit.save, {'attr': {'class': 'btn btn-primary'}}) }}

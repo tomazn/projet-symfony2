@@ -9,145 +9,21 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Ajouter une oeuvre</a></li>
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Modifier une oeuvre</a></li>
+    <li role="presentation"><a href="#categorie" aria-controls="categorie" role="tab" data-toggle="tab">Ajouter une categorie</a></li>
   </ul>
 
   <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">
-          <h2 class="text-center">Ajouter une oeuvre</h2>
-   {{ form_start(form, {'attr':{'class':''}}) }}
-   {{ form_errors(form) }}
-   
-   <!--NOM-->
-    <div class="form-group">
-      {{ form_label(form.nom, "Nom", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.nom) }}
-
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
-    </div>
-   
-   <!--PRIX-->
-    <div class="form-group">
-      {{ form_label(form.prix, "Prix", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.prix) }}
-
-        {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
-    </div>
-   
-    <!--IMAGE-->
-   <div class="form-group">
-      {{ form_label(form.image, "Image", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.image) }}
-
-        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
-    </div>
-   
-    <!--DESCRIPTION-->
-   <div class="form-group">
-      {{ form_label(form.description, "Description", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.description) }}
-
-        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    
-     <!--STOCK-->
-   <div class="form-group">
-      {{ form_label(form.stock, "Stock", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.stock) }}
-
-        {{ form_widget(form.stock, {'attr': {'class': 'form-control'}}) }}
-    </div>
-     
-       <!--ARCHIVE-->
-   <div class="form-group">
-      {{ form_label(form.archive, "Archive", {'label_attr': {'class': ''}}) }}
-
-      {{ form_errors(form.archive) }}
-
-        {{ form_widget(form.archive, {'attr': {'class': 'form-control'}}) }}
-    </div>
-       
-         {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-       
-       {{ form_rest(form) }}
-{{ form_end(form) }}
-      </div>
-      
+     <div role="tabpanel" class="tab-pane active" id="home">
+      {{ render(controller("EcommerceEcommerceBundle:Admin:ProduitAddForm"))}}
+     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
-        <div>
-    <h2 class="text-center">Modifier les oeuvres</h2>
-    <ul style="list-style:none;padding:0;">
-    {% for produit in produits%}
-        <li>
-            <div class="produits col-lg-2 col-md-2 col-sm-4 col-xs-4">
-            <h4 class="text-center produitsNom">{{produit.nom}}</h4>
-            <img class="imageProduits" src="{{produit.image}}"/>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick="openForm({{produit.id}})">
-                Modifier
-            </button>
-            <button type="button" class="btn btn-danger" onClick="deleteForm({{produit.id}})">Supprimer</button>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-    
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="myModalLabel">Modifier</h4>
-      </div>
-      <div class="modal-body">
-        <div id="modal-form-edit"></div>
-      </div>
+        {{ render(controller("EcommerceEcommerceBundle:Admin:ProduitEditForm"))}}
     </div>
-  </div>
-</div>
-</div>
+      <div role="tabpanel" class="tab-pane" id="categorie">
+        {{ render(controller("EcommerceEcommerceBundle:Admin:CategorieAddForm"))}}
     </div>
   </div>
 
 </div>   
 </div>
-
-
-
-<script>
-    function openForm($id){
-      $.ajax({
-         url:'{{ path('ecommerce_ecommerce_admin_EditForm')}}',
-         type: 'POST',
-         data: {"id":$id},
-         cache: false,
-         dataType: 'html',
-         success: function(data){
-             document.getElementById("modal-form-edit").innerHTML = data;
-         },
-          error: function (error) {
-                  alert('error; ' + eval(error));
-         }
-      }); 
-   } 
-   
-   function deleteForm($id){
-      $.ajax({
-         url:'{{ path('ecommerce_ecommerce_admin_deleteForm')}}',
-         type: 'POST',
-         data: {"id":$id},
-         cache: false,
-         dataType: 'html',
-         success: function(data){
-             location.reload(true);
-         },
-          error: function (error) {
-                  alert('error; ' + eval(error));
-         }
-      }); 
-   } 
-</script>
 {% endblock %}

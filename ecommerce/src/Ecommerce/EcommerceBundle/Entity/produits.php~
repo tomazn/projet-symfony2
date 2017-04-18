@@ -263,18 +263,4 @@ class produits
     {
         return $this->categorie;
     }
-
-    /**
-     * Set categorie
-     *
-     * @param \Ecommerce\EcommerceBundle\Entity\categorie $categorie
-     *
-     * @return produits
-     */
-    public function setCategorie(\Ecommerce\EcommerceBundle\Entity\categorie $categorie)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
 }

@@ -1,0 +1,64 @@
+ <h2 class="text-center">Modifier les oeuvres</h2>
+    <ul style="list-style:none;padding:0;">
+    {% for produit in produits%}
+        <li>
+            <div class="produits col-lg-2 col-md-2 col-sm-4 col-xs-4">
+            <h4 class="text-center produitsNom">{{produit.nom}}</h4>
+            <img class="imageProduits" src="{{produit.image}}"/>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick="openForm({{produit.id}})">
+                Modifier
+            </button>
+            <button type="button" class="btn btn-danger" onClick="deleteForm({{produit.id}})">Supprimer</button>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Modifier</h4>
+      </div>
+      <div class="modal-body">
+        <div id="modal-form-edit">Chargement</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ 
+<script>
+    function openForm($id){
+      $.ajax({
+         url:'{{ path('ecommerce_ecommerce_admin_ProduitEditFormModal')}}',
+         type: 'POST',
+         data: {"id":$id},
+         cache: false,
+         dataType: 'html',
+         success: function(data){
+             document.getElementById("modal-form-edit").innerHTML = data;
+         },
+          error: function (error) {
+                  alert('error; ' + eval(error));
+         }
+      }); 
+   } 
+   
+   function deleteForm($id){
+      $.ajax({
+         url:'{{ path('ecommerce_ecommerce_admin_ProduitdeleteForm')}}',
+         type: 'POST',
+         data: {"id":$id},
+         cache: false,
+         dataType: 'html',
+         success: function(data){
+             location.reload();
+         },
+          error: function (error) {
+                  alert('error; ' + eval(error));
+         }
+      }); 
+   } 
+</script>

@@ -1,0 +1,73 @@
+ <div role="tabpanel" class="tab-pane active" id="home">
+          <h2 class="text-center">Ajouter une oeuvre</h2>
+   {{ form_start(form,  {'action': path('ecommerce_ecommerce_admin_ProduitAddForm'), 'method': 'POST'}) }}
+   {{ form_errors(form) }}
+   
+   <!--NOM-->
+    <div class="form-group">
+      {{ form_label(form.nom, "Nom", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.nom) }}
+
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   
+   <!--PRIX-->
+    <div class="form-group">
+      {{ form_label(form.prix, "Prix", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.prix) }}
+
+        {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   
+    <!--IMAGE-->
+   <div class="form-group">
+      {{ form_label(form.image, "Image", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.image) }}
+
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   
+    <!--DESCRIPTION-->
+   <div class="form-group">
+      {{ form_label(form.description, "Description", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.description) }}
+
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    
+     <!--STOCK-->
+   <div class="form-group">
+      {{ form_label(form.stock, "Stock", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.stock) }}
+
+        {{ form_widget(form.stock, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     
+       <!--ARCHIVE-->
+   <div class="form-group">
+      {{ form_label(form.archive, "Archive", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.archive) }}
+
+        {{ form_widget(form.archive, {'attr': {'class': ''}}) }}
+    </div>
+       
+        <!--CATEGORIE-->
+   <div class="form-group">
+      {{ form_label(form.categorie, "Categorie", {'label_attr': {'class': ''}}) }}
+
+      {{ form_errors(form.categorie) }}
+
+        {{ form_widget(form.categorie, {'attr': {'class': ''}}) }}
+    </div>
+       
+         {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+       
+       {{ form_rest(form) }}
+{{ form_end(form) }}
+      </div>
