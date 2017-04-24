@@ -34,7 +34,13 @@ class categorie
    */
     private $parent;
 
-
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enfant", type="boolean")
+     */
+    private $enfant;
+    
     /**
      * Get id
      *
@@ -67,30 +73,6 @@ class categorie
     public function getIntitule()
     {
         return $this->intitule;
-    }
-
-    /**
-     * Set parentID
-     *
-     * @param integer $parentID
-     *
-     * @return categorie
-     */
-    public function setParentID($parentID)
-    {
-        $this->parentID = $parentID;
-
-        return $this;
-    }
-
-    /**
-     * Get parentID
-     *
-     * @return int
-     */
-    public function getParentID()
-    {
-        return $this->parentID;
     }
 
     /**
@@ -143,5 +125,29 @@ class categorie
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set enfant
+     *
+     * @param boolean $enfant
+     *
+     * @return categorie
+     */
+    public function setEnfant($enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return boolean
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
     }
 }

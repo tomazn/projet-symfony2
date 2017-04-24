@@ -12,7 +12,8 @@ class LoadCategorieData implements FixtureInterface
     {
         $categorie = new categorie();
         $categorie->setIntitule('Aucun');
-
+        $categorie->setEnfant(false);
+        
         $manager->persist($categorie);
         $manager->flush();
     }

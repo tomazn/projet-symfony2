@@ -2,6 +2,8 @@
 
 namespace Ecommerce\EcommerceBundle\Repository;
 
+use Doctrine\ORM\QueryBuilder;
+
 /**
  * categorieRepository
  *
@@ -10,4 +12,5 @@ namespace Ecommerce\EcommerceBundle\Repository;
  */
 class categorieRepository extends \Doctrine\ORM\EntityRepository
 {
+   
 }

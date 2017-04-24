@@ -2,7 +2,11 @@
 
 {% block jumbotron %}
 <div class="jumbotron">
+    {% if categorie == null %}
     <h1 class="text-center">Oeuvres d'arts</h1>
+    {% else %}
+    <h1 class="text-center">{{categorie.intitule}}</h1>
+    {% endif %}
 </div>
 {% endblock %}
 

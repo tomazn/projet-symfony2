@@ -8,40 +8,39 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/projet-symfony2/ecommerce/web/css/site.css">
+        <link rel="stylesheet" type="text/css" href="/projet-symfony2/ecommerce/web/css/site.css" />
+        <!--<link rel="stylesheet/less" type="text/css" href="/projet-symfony2/ecommerce/web/css/site.less" />-->
     {% endblock %}
 </head>
 
 <body>
 <nav class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-    <div class="navbarLeft">
     <ul class="navbarlist">
         <li>
-            <a href="{{ path('ecommerce_ecommerce_homepage') }}">Home</a>
+            <a class="navbarLink" href="{{ path('ecommerce_ecommerce_homepage') }}"><span class="glyphicon glyphicon-home"></span></a>
         </li>
          <li>
-            <a href="{{ path('ecommerce_ecommerce_produits') }}">Oeuvres d'arts</a>
+             <ul class="navbarlist">
+                 <li class="sous-categorie-block">
+                    <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produits') }}"><span class="glyphicon glyphicon-th"></span> Oeuvres d'arts</a>
+                    <div class="sous-categorie left-sscat">
+                        <ul class="navbarlist">
+                         {{render(controller('EcommerceEcommerceBundle:Default:categorieView'))}}
+                     </ul> 
+                    </div> 
+                 </li>
+             </ul>
         </li>
         <li>
-            <a href="{{ path('ecommerce_ecommerce_admin') }}">admin</a>
+            <a class="navbarLink" href="{{ path('ecommerce_ecommerce_admin') }}"><span class="glyphicon glyphicon-wrench"></span> Back office</a>
         </li>
     </ul>
-    </div>
-    <div class="navbarRight">
-        <ul class="navbarlist">
-        <li>
-            <a href="">Panier</a>
-        </li>
-    </ul>
-    </div>
-    </div>
 </nav>
     <div id="main">
     {% block jumbotron %}
     <div class="jumbotron">
     <h1 class="text-center">Welcome to the Rachavong's museum</h1>
-    <p class="text-center">Site propulsé avec Symfony2/AngularJs/Bootstrap</p>
+    <p class="text-center">Site propulsé avec Symfony3/AngularJs/Bootstrap</p>
 </div>
     {% endblock %}
     
@@ -71,10 +70,10 @@
     </footer>
 
 {% block javascripts %}
-
-    <script src="/projet-symfony2/ecommerce/web/script/app.js"></script>    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js"></script>-->
+     <script src="/projet-symfony2/ecommerce/web/script/app.js"></script>    
 {% endblock %}
 
 </body>

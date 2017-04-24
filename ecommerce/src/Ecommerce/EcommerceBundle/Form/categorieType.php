@@ -21,7 +21,7 @@ class categorieType extends AbstractType
                 ->add('parent', EntityType::class, array(
                 'class' => 'EcommerceEcommerceBundle:categorie',
                 'choice_label' => 'intitule'
-            ))
+                ))
                 ->add('save', SubmitType::class, array('label' => 'Ajouter'));;
     }
     

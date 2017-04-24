@@ -10,6 +10,22 @@ namespace Ecommerce\EcommerceBundle\Repository;
  */
 class produitsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findProduitsEnfant($categorie){
+
+         $qb = $this->createQueryBuilder('a');
+
+           $qb
+      ->join('a.categorie', 'c')
+      ->addSelect('c')
+    ;
+
+    $qb
+        ->where($qb->expr()->eq('c.parent', $categorie))
+        ->orWhere($qb->expr()->eq('c.id', $categorie));
     
-    
+        return $qb
+          ->getQuery()
+          ->getResult()
+        ;
+          }
 }

@@ -3,8 +3,8 @@ ecommerce_ecommerce_homepage:
     defaults: { _controller: EcommerceEcommerceBundle:Default:index }
 
 ecommerce_ecommerce_produits:
-    path:     /produits
-    defaults: { _controller: EcommerceEcommerceBundle:Produits:index }
+    path:     /produits/{categorie}
+    defaults: { _controller: EcommerceEcommerceBundle:Produits:index, categorie:0 }
     
 ecommerce_ecommerce_produit:
     path:     /produit/{id}
