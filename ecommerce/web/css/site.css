@@ -30,17 +30,14 @@
 .navbarRight{
     float:right;
 }
-
-.left-sscat{
-    left:44px;
-}
-
 .sous-categorie{
     display: none;
     position: absolute;
     background-color: #FFF;
     top: 50px;
     box-shadow: 0px 8px 10px -10px #424242;
+    width: 100%;
+    left:0px;
 }
 
 .sous-categorie li{

@@ -1,10 +1,14 @@
     {% for cat in categorie %}
     {% if((cat.parent != null) and (cat.parent.id == currentParent))%}
     <li class="sous-categorie-block">
-            <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produits',{'categorie':cat.id}) }}">{{cat.intitule}}</a>
-             
+            <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produits',{'categorie':cat.id}) }}">
+                {{cat.intitule}}
             {% if(cat.enfant) %}
-            <div class="sous-categorie">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            {% endif %}
+            </a>
+            {% if(cat.enfant) %}
+            <div  class="sous-categorie">
             <ul class="navbarlist">
                 {{render(controller('EcommerceEcommerceBundle:Default:categorieView',{'currentParent':cat.id}))}}
             </ul>
