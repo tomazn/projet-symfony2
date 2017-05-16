@@ -64,8 +64,24 @@
     height: 100%;
 }
 
+.modal-navbar-backdrop{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #000;
+    opacity:0.5;
+    display:none;
+}
 
 /* ### PRODUITS ### */
+
+.jumbotronWallpaper{
+    background-image: url('../uploads/img/adam-dieu.png');
+    background-position: 0 30%;
+}
 
 .ListeProduits{
     list-style:none;
@@ -110,4 +126,10 @@
 
 .imageProduits{
     width:100%;
+}
+
+/* ### PRODUIT ### */
+
+.produit-leftside img{
+    width: 100%;
 }

@@ -1,2 +1,2 @@
 # projet-symfony2
-Site e-commerce d'un projet symfony2
+Découverte du framework symfony2 à travers un site e-commerce

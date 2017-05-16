@@ -3,6 +3,8 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * produits
@@ -38,14 +40,7 @@ class produits
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=2048)
      */
     private $description;
 
@@ -62,6 +57,12 @@ class produits
      * @ORM\Column(name="stock", type="integer")
      */
     private $stock;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\image",cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
+     */
+    private $image;
 
      /**
     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\categorie")
@@ -125,30 +126,6 @@ class produits
     public function getPrix()
     {
         return $this->prix;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return produits
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -276,5 +253,29 @@ class produits
         $this->categorie = $categorie;
 
         return $this;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\image $image
+     *
+     * @return produits
+     */
+    public function setImage(\Ecommerce\EcommerceBundle\Entity\image $image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Ecommerce\EcommerceBundle\Entity\image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

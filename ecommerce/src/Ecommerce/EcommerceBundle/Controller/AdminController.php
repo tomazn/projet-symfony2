@@ -11,13 +11,14 @@ use Ecommerce\EcommerceBundle\Form\categorieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class AdminController extends Controller {
-
+    
     public function indexAction(Request $request) {
         return $this->render('EcommerceEcommerceBundle:Admin:admin.html.twig');
     }
-
+    
     public function ProduitAddFormAction(Request $request) {
         $produits = new produits();
 
@@ -30,6 +31,9 @@ class AdminController extends Controller {
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                
+                $produits->getImage()->upload();
+                
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($produits);
                 $manager->flush();
@@ -49,6 +53,7 @@ class AdminController extends Controller {
         return $this->render('EcommerceEcommerceBundle:Admin:ProduitEditForm.html.twig', array("produits" => $ListeProduits));
     }
 
+    
     public function ProduitEditFormModalAction(Request $request) {
         $id = $request->request->get('id');
         if (null === $id) {
@@ -75,6 +80,7 @@ class AdminController extends Controller {
         return $this->render('EcommerceEcommerceBundle:Admin:ProduitEditFormModal.html.twig', array("formEdit" => $form->createView()));
     }
 
+
     public function ProduitdeleteFormAction(Request $request) {
         $id = $request->request->get('id');
         $manager = $this->getDoctrine()->getManager();
@@ -86,6 +92,7 @@ class AdminController extends Controller {
 
         return new Response("Catégorie supprimé.");
     }
+
 
     public function CategorieAddFormAction(Request $request) {
         $categorie = new categorie();

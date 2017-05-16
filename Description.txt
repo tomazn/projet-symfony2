@@ -2,6 +2,5 @@ Réalisation d'une site e-commerce d'oeuvres de musée en symfony2/AngularJs
 
 TODO: 
 - Modifier produit fonctionne toujours pas (cause: form généré en ajax)
-- Ajouter assert
-- Surcharger view FOSuserbundle
-- Ajouter panier
+- Compléter User
+- Modifier/supprimer catégorie

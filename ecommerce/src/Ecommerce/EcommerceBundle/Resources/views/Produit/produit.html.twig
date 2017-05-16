@@ -8,17 +8,40 @@
 
 {% block body %}
     <div class="container">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{produit.image}}"/>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 produit-leftside">
+            <img src="{{ asset('uploads/img/' ~ produit.image.url) }}"/>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <p>
-                <span>{{produit.categorie}}</span>
                 <span><u>Prix:</u> {{produit.prix}}€</span><br/>
                 <span><u>Quantité:</u> {{produit.stock}}</span><br/>
                 {{produit.description}}
             </p>
-            <input class="btn btn-default" type="button" value="Ajouter au panier"/>
+            <input class="btn btn-default AjoutPanier" data-id="{{produit.id}}" type="button" value="Ajouter au panier"/>
+            <!--<a href="{{ path('ecommerce_ecommerce_produit_addPanier', {'id':produit.id}) }}" class="btn btn-default">Ajouter au panier</a>-->
         </div>
     </div>
+<script type="text/javascript" src="{{asset('///ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')}}"></script>
+<script>
+    $( document ).ready(function() {
+    $(document).on('click','.AjoutPanier',function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+       type:'POST',
+       url:'{{ path('ecommerce_ecommerce_produit_addPanier')}}',
+       data:{'id':id},
+       success: function(){
+           alert("ajouté");
+       },
+       error: function (error) {
+                  alert('error; ' + eval(error));
+         }
+    });
+    });
+    });
+
+</script>
 {% endblock %}
+
+
+

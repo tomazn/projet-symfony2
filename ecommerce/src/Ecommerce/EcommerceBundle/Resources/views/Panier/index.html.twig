@@ -1,0 +1,72 @@
+{% extends "EcommerceEcommerceBundle:Default:index.html.twig" %}
+
+{% block jumbotron %}
+    <div class="jumbotron">
+    <h1 class="text-center">Panier</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+{% if(listPanier == null or listPanier|length < 0) %}
+<h2>La panier est vide.</h2>
+{% else %}
+    {% for produitPanier in listPanier %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <h2 class="text-center">{{produitPanier.produit.nom}}</h2>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 produit-leftside">
+            <img src="{{ asset('uploads/img/' ~ produitPanier.produit.image.url) }}"/>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <p>
+                <span><u>Prix: </u> {{produitPanier.produit.prix}}€</span><br/>
+                <span><u>Quantité: </u> {{produitPanier.quantite}}</span><br/>
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-1 col-md1 col-lg-1">
+            <button data-id="{{produitPanier.id}}" class="DeletePanierBouton btn btn-danger">
+               <span class="glyphicon glyphicon-remove">
+            </span> 
+            </button>
+            <!--<a class="btn btn-danger" href="{{ path('ecommerce_ecommerce_produit_deleteLignePanier', {'id':produitPanier.id})}}">supprimer</a>-->
+        </div>
+    </div>
+    {% endfor %}
+        <div class="row">
+        <p>
+            <span>
+                <u>Quantité totale :</u> {{panier.nombreTotal}}
+            </span>
+            <br/>
+            <span>
+                <u>Prix totale :</u> {{panier.prixTotal}}
+            </span>
+        </p>
+    </div>
+{% endif %}  
+</div>
+<script type="text/javascript" src="{{asset('///ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')}}"></script>
+<script>
+    $( document ).ready(function() {
+    $(document).on('click','.DeletePanierBouton',function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+       type:'POST',
+       url:'{{ path('ecommerce_ecommerce_produit_deleteLignePanier')}}',
+       data:{'id':id},
+       success: function(){
+           alert("supprimé");
+           location.reload();
+       },
+       error: function (error) {
+                  alert('error; ' + eval(error));
+         }
+    });
+    });
+    });
+
+</script>
+{% endblock %}
+

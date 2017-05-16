@@ -10,22 +10,35 @@ ecommerce_ecommerce_produit:
     path:     /produit/{id}
     defaults: { _controller: EcommerceEcommerceBundle:Produit:index }
     
+ecommerce_ecommerce_produit_panier:
+    path:     /panier
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:index }     
+    
+ecommerce_ecommerce_produit_addPanier:
+    path:     /addPanier
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:addPanier } 
+   
+ecommerce_ecommerce_produit_deleteLignePanier:
+    path:     /deleteLignePanier
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:deleteLignePanier }    
+    
 ecommerce_ecommerce_admin:
-    path:     /admin
+    path:     /admininistrateur
     defaults: { _controller: EcommerceEcommerceBundle:Admin:index }   
     
 ecommerce_ecommerce_admin_ProduitAddForm:
-    path:     /admin/ProduitAddForm
+    path:     /admininistrateur/ProduitAddForm
     defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitAddForm } 
     
 ecommerce_ecommerce_admin_ProduitEditFormModal:
-    path:     /admin/ProduitEditFormModal
+    path:     /admininistrateur/ProduitEditFormModal
     defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitEditFormModal }    
 
 ecommerce_ecommerce_admin_ProduitdeleteForm:
-    path:     /admin/ProduitdeleteForm
+    path:     /admininistrateur/ProduitdeleteForm
     defaults: { _controller: EcommerceEcommerceBundle:Admin:ProduitdeleteForm }
     
 ecommerce_ecommerce_admin_CategorieAddForm:
-    path: /admin/CategorieAddForm
+    path: /admininistrateur/CategorieAddForm
     defaults: { _controller: EcommerceEcommerceBundle:Admin:CategorieAddForm } 
+    
