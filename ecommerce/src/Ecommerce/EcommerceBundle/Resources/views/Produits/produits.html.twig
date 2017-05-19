@@ -12,26 +12,35 @@
 
 {% block body %}
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
-            Filtres à venir
+        <div ng-cloak class="col-lg-2 col-md-2 col-xs-12 col-sm-12" ng-show="produits.length">
+            <div>
+                <h3>Recherche</h3>
+                <input class="form-control" type="text" ng-model="search"/>
+            </div>
+             <div class="sliderExample">
+                 <h3>Filtrage prix</h3>
+                    <div ui-slider="{range: true}" min="0" max="{[{max}]}" step="1"  ng-model="demoVals.sliderPrix">
+                        <div class="ui-slider-out-of-bounds" style="left:0; width: 20%"></div>
+                        <div class="ui-slider-out-of-bounds" style="right:0; width: 10%"></div>
+                    </div>
+                 <p>{[{filtreMin}]}€ - {[{filtreMax}]}€</p>
+                </div>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-            <ul class="ListeProduits">
-        {% for produit in produits%}
-        <li>
-            <div class="produits">
-            <h3 class="text-center produitsNom">{{produit.nom}}</h3>
-            <a href="{{ path("ecommerce_ecommerce_produit", {'id' : produit.id})}}"><img class="imageProduits" src="{{ asset('uploads/img/' ~ produit.image.url) }}"/></a>
-            <p class="produitsPrix">
-                <span>Prix: {{produit.prix}}€</span><br/>
-            </p>
+            <div ng-if="loading">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                  </div>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
+            <div ng-if="!loading">
+                <div ng-view></div>
+            </div>
         </div>
-    
-    </div>
 </div>
 {% endblock %}

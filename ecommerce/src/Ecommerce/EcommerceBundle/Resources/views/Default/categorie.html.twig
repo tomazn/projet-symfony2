@@ -1,7 +1,8 @@
-    {% for cat in categorie %}
+<div>    
+{% for cat in categorie %}
     {% if((cat.parent != null) and (cat.parent.id == currentParent))%}
     <li class="sous-categorie-block">
-            <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produits',{'categorie':cat.id}) }}">
+            <a class="navbarLink" ng-click="redirectCategorie({{cat.id}})">
                 {{cat.intitule}}
             {% if(cat.enfant) %}
                 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -17,3 +18,4 @@
     {% endif %}
     </li>
     {% endfor %}
+</div>

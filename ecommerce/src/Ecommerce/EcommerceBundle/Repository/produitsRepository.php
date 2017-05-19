@@ -17,6 +17,8 @@ class produitsRepository extends \Doctrine\ORM\EntityRepository
            $qb
       ->join('a.categorie', 'c')
       ->addSelect('c')
+      ->leftJoin('a.image', 'image')
+      ->addSelect('image');
     ;
 
     $qb
@@ -25,7 +27,24 @@ class produitsRepository extends \Doctrine\ORM\EntityRepository
     
         return $qb
           ->getQuery()
-          ->getResult()
+          ->getArrayResult()
+        ;
+          }
+          
+        public function findProduits($categorie){
+
+         $qb = $this->createQueryBuilder('a');
+    
+        $qb
+        ->where('a.categorie = :categorie')
+        ->setParameter('categorie', $categorie)
+        ->leftJoin('a.image', 'image')
+        ->addSelect('image')
+  ;
+    
+        return $qb
+          ->getQuery()
+          ->getArrayResult()
         ;
           }
 }

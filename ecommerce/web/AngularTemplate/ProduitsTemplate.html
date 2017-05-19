@@ -1,0 +1,16 @@
+<ul class="ListeProduits">
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12" ng-repeat="produit in produits | filter:search | filtreprix:this">
+            <div class="produits">
+            <h3 class="text-center produitsNom">{[{produit.nom}]}</h3>
+            <a href="../produit/{[{produit.id}]}"><img class="imageProduits" src="../uploads/img/{[{produit.image.url}]}"/></a>
+            <p class="produitsPrix">
+                <span>Prix: {[{produit.prix}]}€</span><br/>
+            </p>
+            </div>
+        </li>
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12" ng-if="!produits.length">
+            <div class="produits">
+            <h3 class="text-center produitsNom">Aucun résultat</h3>
+            </div>
+        </li>
+</ul>

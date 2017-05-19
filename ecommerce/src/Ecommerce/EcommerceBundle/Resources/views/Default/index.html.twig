@@ -8,12 +8,13 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="/projet-symfony2/ecommerce/web/css/site.css" />
         <!--<link rel="stylesheet/less" type="text/css" href="/projet-symfony2/ecommerce/web/css/site.less" />-->
     {% endblock %}
 </head>
 
-<body>
+<body ng-app="museum" ng-controller="produits">
 <nav class="navbar navbar-fixed-top">
     <ul class="navbarlist">
         <li>
@@ -23,7 +24,7 @@
              <ul class="navbarlist">
                  <li class="sous-categorie-block">
                     <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produits') }}"><span class="glyphicon glyphicon-picture"></span> Oeuvres d'arts</a>
-                    <div class="sous-categorie left-sscat">
+                    <div class="sous-categorie left-sscat" >
                         <ul class="navbarlist">
                          {{render(controller('EcommerceEcommerceBundle:Default:categorieView'))}}
                      </ul> 
@@ -37,12 +38,20 @@
         <li>
             <a class="navbarLink" href="{{ path('ecommerce_ecommerce_produit_panier') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Panier</a>
         </li>
-        <li>
-            <a href="{{ path('fos_user_security_login')}}" class="navbarLink">Se connecter</a>
-        </li>
-        <li>
-            <a href="{{ path('fos_user_registration_register')}}" class="navbarLink">S'inscrire</a>
-        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a  href="{{ path('fos_user_profile_show') }}" class="navbarLink"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
+            <li>
+                <a class="navbarLink" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('fos_user_security_login')}}" class="navbarLink">Se connecter</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_registration_register')}}" class="navbarLink">S'inscrire</a>
+            </li>
+        {% endif %}
+        
     </ul>
 </nav>
     <div id="main">
@@ -79,7 +88,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js"></script>-->
-     <script src="/projet-symfony2/ecommerce/web/script/app.js"></script>    
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+     <script src="/projet-symfony2/ecommerce/web/script/app.js"></script>  
 {% endblock %}
 
 </body>

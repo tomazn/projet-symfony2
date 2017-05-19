@@ -6,6 +6,10 @@ ecommerce_ecommerce_produits:
     path:     /produits/{categorie}
     defaults: { _controller: EcommerceEcommerceBundle:Produits:index, categorie:0 }
     
+ecommerce_ecommerce_allProduits:
+    path:     /getProduits
+    defaults: { _controller: EcommerceEcommerceBundle:Produits:getProduits}    
+    
 ecommerce_ecommerce_produit:
     path:     /produit/{id}
     defaults: { _controller: EcommerceEcommerceBundle:Produit:index }

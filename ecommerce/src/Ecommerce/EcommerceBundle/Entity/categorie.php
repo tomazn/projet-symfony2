@@ -88,16 +88,6 @@ class categorie
 
         return $this;
     }
-
-    /**
-     * Get produit
-     *
-     * @return \Ecommerce\EcommerceBundle\Entity\produits
-     */
-    public function getProduit()
-    {
-        return $this->produit;
-    }
     
     public function __toString() {
     return $this->intitule;
